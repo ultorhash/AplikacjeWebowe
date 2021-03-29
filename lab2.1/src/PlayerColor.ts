@@ -1,0 +1,1 @@
+export enum PlayerColor { player1 = "red", player2 = "blue" }
