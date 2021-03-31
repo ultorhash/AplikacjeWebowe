@@ -8,25 +8,25 @@
     <title>Tic tac toe</title>
 </head>
 <body>
-    <nav>
-        <header>
-            <h1>Tic Tac Toe</h1>
-        </header>
-    </nav>
     <section>
         <div id="player__info">
-            <span id="current__player">Ruch gracza <b id="current__player__move">X</b></span>
+            <p id="current__player__move"></p>
         </div>
-        <div id="winner__info">
-            <h3>Gratulacje</h3>
-            <span id="winner__info__message"></span>
+        <div id="main__menu">
+            <h1>Tic tac toe</h1>
+            <form id="game__settings">
+                <input type="number" id="input__board__length" placeholder="Board side length = 3" maxlength="2" min="3" max="20"/>
+                <input type="number" id="input__win__length" placeholder="Minimum length to win = 3" maxlength="2" min="3" max="8"/>
+            </form>
+            <button id="play__button">Play</button>
         </div>
         <div id="board"></div>
-        <div id="reset__game">
-            <button id="reset__game__button">Nowa gra</button>
+        <div id="game__result">
+            <h1>Game over</h1>
+            <p id="game__winner"></p>
+            <p id="return__timer"></p>
         </div>
     </section>
     <script src="./bundle.js"></script>
-    <footer></footer>
 </body>
 </html>
