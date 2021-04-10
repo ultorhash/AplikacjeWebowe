@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+body {
+    background-color: lightskyblue;
+}
+
+header {
+    background-color: navy;
+    height: 80px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 40px;
+    -webkit-text-stroke: 2px deepskyblue;
+    color: white;
+    margin-left: 5%;
+}
+
+#menuContainer {
+    width: 100%;
+    height: auto;
+    background: linear-gradient(to bottom, navy, lightskyblue);
+    margin: auto;
+}
+
+#gameList {
+    text-align: center;
+}
+
+#gameList li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+#menuContainer button {
+    width: 100px;
+    height: auto;
+    min-height: 40px;
+    border: 2px solid black;
+    background-color: indigo;
+    color: gainsboro;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: 2px 2px 2px dimgray;
+    overflow-wrap: break-word;  
+}
+
+#menuContainer button:hover {
+    cursor: pointer;
+}
+
+#gameContainer {
+    width: auto;
+    height: 400px;
+    background-color: lightgray;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
