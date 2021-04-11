@@ -1,4 +1,5 @@
 import { Game } from './Game';
+import { Board } from './tictactoe/Board';
 
 export class TicTacToe implements Game
 {
@@ -27,8 +28,6 @@ export class TicTacToe implements Game
 
     createGame()
     {
-        const p = document.createElement('p');
-        p.innerHTML = "Tic tac toe!";
-        this.gameContainer.appendChild(p);
+        const board = new Board();
     }  
 }
