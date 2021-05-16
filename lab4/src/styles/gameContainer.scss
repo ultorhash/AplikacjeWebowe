@@ -1,0 +1,7 @@
+@import './mixins.scss';
+
+#gameContainer {
+    height: 100%;
+    width: 100%;
+    @include display-flex;
+}

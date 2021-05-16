@@ -1,0 +1,20 @@
+@import './mixins.scss';
+
+#changeColors {
+    @include default-border-radius-button;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 30px;
+    box-shadow: inset 0 0 1em white, 0 0 1em gray;
+    font-family: monospace;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#changeColors:hover {
+    cursor: pointer;
+    background-color: hotpink;
+    color: white;
+}

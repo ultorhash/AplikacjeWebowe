@@ -5,10 +5,13 @@
 
 import { Games } from './Games';
 import { GameFactory } from './GameFactory';
+import './styles/style.scss';
 
 const Factory = new GameFactory();
 
 const GameListElement = document.getElementById('gameList');
+const ChangeStyle = document.getElementById('changeColors')?.addEventListener('click', () => alert("XD"));
+
 for (let game in Games)
 {
     let gameOnList = document.createElement('li');

@@ -1,0 +1,9 @@
+@mixin display-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin default-border-radius-button {
+    border-radius: 10px;
+}
