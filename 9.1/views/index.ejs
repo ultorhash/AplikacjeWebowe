@@ -42,13 +42,28 @@
             <button>Remove by product id</button>
         </div>
     </div>
+    <div class="edit-container">
+        <div class="edit-inputs">
+            <label>ID:</label><input name="editId" type="number">
+            <label>New roduct name:</label><input name="editName" type="text">
+            <label>New product price:</label><input name="editPrice" type="number">
+            <label>New product producer:</label><input name="editProducer" type="text">
+        </div>
+        <div class="edit-button">
+            <button>Edit by product id</button>
+        </div>
+    </div>
 </body>
 <script>
 
-    const getProduct = (product) => {
+    const getProduct = (response) => {
         const resultBox = document.querySelector('.search-result');
         const info = document.createElement('p');
-        info.innerHTML = `Product name: ${product.name}, cost: ${product.price}$`;
+
+        let productName = response[0].name;
+        let productPrice = response[0].price;
+
+        info.innerHTML = `Product name: ${productName}, cost: ${productPrice}$`;
 
         resultBox.appendChild(info);
     }
@@ -67,9 +82,14 @@
         });
     }
 
+    const updateProduct = () => {
+ 
+    }
+
     const btnFind = document.querySelector('.search-button button');
     const btnAllProducts = document.querySelector('.all-container button');
     const btnRemoveProduct = document.querySelector('.remove-container button');
+    const btnEditProduct = document.querySelector('.edit-container button');
 
     btnFind.addEventListener('click', () => {
 
@@ -95,7 +115,26 @@
         fetch(`/products/:${productId}`, {
             method: "DELETE"
         })
-        .then(res => res.json());
+        .then(res => { res.json(); console.log(res)});
+    });
+
+    btnEditProduct.addEventListener('click', () => {
+        const productId = document.querySelector('[name="editId"]').value;
+        const productName = document.querySelector('[name="editName"]').value;
+        const productPrice = document.querySelector('[name="editPrice"]').value;
+        const productProducer = document.querySelector('[name="editProducer"]').value;
+
+        fetch('/products', {
+            method: "PATCH",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({id: productId, name: productName, price: productPrice, producer: productProducer})
+        });
+
+        alert("Product has been updated.");
     });
 
     const btn = document.querySelector('.add-container button');
@@ -114,14 +153,14 @@
         const inputProducerValue = inputProducer.value;
 
         fetch('/products', {
-            method: "POST",
+            method: "PATCH",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
 
             body: JSON.stringify({id: inputIdValue, name: inputNameValue, price: inputPriceValue, producer: inputProducerValue})
-        })
+        });
 
         alert("Product added successfuly!");
     });

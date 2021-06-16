@@ -1,4 +1,4 @@
-//NODE_ENV=something node server.ts - start server
+// [START SERVER COMMAND]: NODE_ENV=something node server.ts
 
 const express = require('express')
 const path = require('path')
@@ -48,18 +48,36 @@ app.post('/products', (req, res) => {
 });
 
 app.get('/products/:id', (req, res) => {
-
     let productId = +(req.params.id.substr(1));
-    let foundProduct = products.find(p => {
+    products = products.filter(p => {
         return p.id === productId;
     });
 
-    res.json(foundProduct);
+    res.json(products);
 });
 
 app.delete('/products/:id', (req, res) => {
+
     let productId = +(req.params.id.substr(1));
     products = products.filter(p => {
         return p.id !== productId;
     });
+
+    res.json(products);
+});
+
+app.patch('/products', (req, res) => {
+    products = products.filter(p => {
+        return p.id !== +(req.body.id);
+    });
+
+    let newProduct = {
+        id: +(req.body.id),
+        name: req.body.name,
+        price: req.body.price,
+        producer: req.body.producer
+    }
+
+    products.push(newProduct);
+    res.send(products);
 });

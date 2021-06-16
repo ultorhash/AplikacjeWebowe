@@ -4,12 +4,12 @@
 }
 
 body {
-    background-color: white;
+    background-color: whitesmoke;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .add-container {
-    background-color: deepskyblue;
+    background-color: lightgray;
 }
 
 .add-inputs {  
@@ -19,11 +19,17 @@ body {
     padding: 1%;
 }
 
-.add-inputs label{
+.add-inputs label, .edit-inputs label {
     margin: 0 1%;
+    font-size: 12px;
+    letter-spacing: 1px;
+    background-image: linear-gradient(to right, dimgray, white, white, white, dimgray);
+    padding: 0.5%;
+    font-weight: 700;
+    border-radius: 10px;
 }
 
-.add-inputs input, .search-input input, .remove-input input {
+.add-inputs input, .search-input input, .remove-input input, .edit-inputs input {
     border: 2px solid gray;
     padding: 0.5%;
     text-align: center;
@@ -38,23 +44,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 3px solid gray;
 }
 
-.add-button button, .search-button button, .all-button button, .remove-button button {
+.add-button button, .search-button button, .all-button button, .remove-button button, .edit-button button {
     border: none;
     padding: 0.5%;
     font-weight: bold;
-    background-color: lightgray;
+    background-color: dodgerblue;
     cursor: pointer;
     border-radius: 5px;
     border: 2px solid gray;
+    color: white;
+}
+
+.add-button button:hover, .search-button button:hover, .all-button button:hover,
+.remove-button button:hover, .edit-button button:hover {
+    background-color: deepskyblue;
 }
 
 .search-container {
-    background-color: rgb(98, 148, 204);
+    background-color: whitesmoke;
     padding: 0.5%;
-    border-bottom: 3px solid gray;
 }
 
 .search-input, .search-button, .search-result {
@@ -65,8 +75,7 @@ body {
 }
 
 .all-container {
-    background-color: rgb(115, 196, 91);
-    border-bottom: 3px solid gray;
+    background-color: lightgray;
     padding: 0.5%;
 }
 
@@ -78,16 +87,23 @@ body {
     margin-bottom: 1%;
 }
 
+.all-products {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .all-products p {
     padding: 0.5%;
-    border: 1px solid dimgray;
-    background-color: darkslategrey;
+    border: 1px solid gray;
     color: white;
     margin: 0.5% 0;
+    background-color: rgb(115, 187, 255);
 }
 
 .remove-container {
-    background-color: maroon;
+    background-color: whitesmoke;
     padding: 1%;
 }
 
@@ -96,4 +112,26 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0.5% 0;
+}
+
+.edit-container {
+    background-color: lightgray;
+    padding: 1%;
+}
+
+.edit-button, .edit-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5% 0;
+}
+
+.edit-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-button button {
+    margin-top: 1%;
 }
