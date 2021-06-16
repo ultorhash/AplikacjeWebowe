@@ -1,0 +1,53 @@
+<html lang="en">  
+    <head>
+
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        <div id="box">
+            <input id="chat-input" type="text">
+            <button id="send">Send</button>
+        </div>
+        <div class="chat-history">
+
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            // client
+            var socket = io.connect('http://localhost:4200/');
+            socket.on('connect', function(data) {
+                socket.emit('join', 'Hello World from client');
+            });
+
+            socket.on('message', (msg) => {
+                broadcastToUsers(msg);
+                console.log(msg);
+            });
+
+            const btnSend = document.getElementById('send');
+
+            const broadcastMessage = () => {
+                const inputValue = document.getElementById('chat-input').value;
+                socket.emit('message', inputValue);
+
+                const chatBox = document.querySelector('.chat-history');
+                const newMessage = document.createElement('p');
+                newMessage.innerHTML = inputValue;
+
+                chatBox.appendChild(newMessage);
+            }
+
+            const broadcastToUsers = (msg) => {
+
+                const chatBox = document.querySelector('.chat-history');
+                const newMessage = document.createElement('p');
+                newMessage.innerHTML = msg;
+
+                chatBox.appendChild(newMessage);
+            }
+
+            btnSend.addEventListener('click', broadcastMessage);
+
+        </script>
+    </body>
+</html>

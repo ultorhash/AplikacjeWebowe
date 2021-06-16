@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/css/style.css">
+</head>
+<body>
+    <div class="add-container">
+        <div class="add-inputs">
+            <label>ID:</label><input name="id" type="text">
+            <label>Product name:</label><input name="name" type="text">
+            <label>Product price:</label><input name="price" type="number">
+            <label>Product producer:</label><input name="producer" type="text">
+        </div>
+        <div class="add-button">
+            <button>Add product</button>
+        </div>
+    </div>
+    <div class="search-container">
+        <div class="search-input">
+            <input type="number">
+        </div>
+        <div class="search-button">
+            <button>Find by product id</button>
+        </div>
+        <div class="search-result"></div>
+    </div>
+    <div class="all-container">
+        <div class="all-button">
+            <button>Show all available products</button>
+        </div>
+        <div class="all-products"></div>
+    </div>
+    <div class="remove-container">
+        <div class="remove-input">
+            <input type="number">
+        </div>
+        <div class="remove-button">
+            <button>Remove by product id</button>
+        </div>
+    </div>
+</body>
+<script>
+
+    const getProduct = (product) => {
+        const resultBox = document.querySelector('.search-result');
+        const info = document.createElement('p');
+        info.innerHTML = `Product name: ${product.name}, cost: ${product.price}$`;
+
+        resultBox.appendChild(info);
+    }
+
+    const getAllProducts = (products) => {
+        const resultBox = document.querySelector('.all-products');
+        
+        while (resultBox.lastChild) {
+            resultBox.removeChild(resultBox.lastChild);
+        }
+
+        products.forEach(product => {
+            const p = document.createElement('p');
+            p.innerHTML = `ID: ${product.id}, name: ${product.name}, price: ${product.price}, producer: ${product.producer}`;
+            resultBox.appendChild(p);
+        });
+    }
+
+    const btnFind = document.querySelector('.search-button button');
+    const btnAllProducts = document.querySelector('.all-container button');
+    const btnRemoveProduct = document.querySelector('.remove-container button');
+
+    btnFind.addEventListener('click', () => {
+
+        const productId = document.querySelector('.search-input input').value;
+
+        fetch(`/products/:${productId}`, {
+            method: "GET"
+        })
+        .then(res => res.json()
+        .then(res => getProduct(res)));
+    });
+
+    btnAllProducts.addEventListener('click', () => {
+        fetch(`/products`, {
+            method: "GET"
+        })
+        .then(res => res.json()
+        .then(res => getAllProducts(res)));
+    });
+
+    btnRemoveProduct.addEventListener('click', () => {
+        const productId = document.querySelector('.remove-input input').value;
+        fetch(`/products/:${productId}`, {
+            method: "DELETE"
+        })
+        .then(res => res.json());
+    });
+
+    const btn = document.querySelector('.add-container button');
+    const inputId = document.querySelector('[name="id"]');
+    const inputName = document.querySelector('[name="name"]');
+    const inputPrice = document.querySelector('[name="price"]');
+    const inputProducer = document.querySelector('[name="producer"]');
+
+    btn.addEventListener("click", (ev) => {
+
+        ev.preventDefault(); // do not reload page
+
+        const inputIdValue = inputId.value;
+        const inputNameValue = inputName.value;
+        const inputPriceValue = inputPrice.value;
+        const inputProducerValue = inputProducer.value;
+
+        fetch('/products', {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({id: inputIdValue, name: inputNameValue, price: inputPriceValue, producer: inputProducerValue})
+        })
+
+        alert("Product added successfuly!");
+    });
+
+</script>
+</html>

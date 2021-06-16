@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.add-container {
+    background-color: deepskyblue;
+}
+
+.add-inputs {  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+}
+
+.add-inputs label{
+    margin: 0 1%;
+}
+
+.add-inputs input, .search-input input, .remove-input input {
+    border: 2px solid gray;
+    padding: 0.5%;
+    text-align: center;
+}
+
+.add-inputs input:focus, .search-input input:focus{
+    outline: none;
+}
+
+.add-button {
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid gray;
+}
+
+.add-button button, .search-button button, .all-button button, .remove-button button {
+    border: none;
+    padding: 0.5%;
+    font-weight: bold;
+    background-color: lightgray;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+
+.search-container {
+    background-color: rgb(98, 148, 204);
+    padding: 0.5%;
+    border-bottom: 3px solid gray;
+}
+
+.search-input, .search-button, .search-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1% 0;
+}
+
+.all-container {
+    background-color: rgb(115, 196, 91);
+    border-bottom: 3px solid gray;
+    padding: 0.5%;
+}
+
+.all-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 1%;
+}
+
+.all-products p {
+    padding: 0.5%;
+    border: 1px solid dimgray;
+    background-color: darkslategrey;
+    color: white;
+    margin: 0.5% 0;
+}
+
+.remove-container {
+    background-color: maroon;
+    padding: 1%;
+}
+
+.remove-button, .remove-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5% 0;
+}
